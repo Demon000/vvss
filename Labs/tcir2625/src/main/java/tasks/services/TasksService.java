@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tasks.model.ArrayTaskList;
 import tasks.model.Task;
-import tasks.model.TasksOperations;
 
 import java.util.Date;
 
@@ -47,10 +46,13 @@ public class TasksService {
     }
 
     public Iterable<Task> filterTasks(Date start, Date end){
-        TasksOperations tasksOps = new TasksOperations(getObservableList());
-        Iterable<Task> filtered = tasksOps.incoming(start,end);
-        //Iterable<Task> filtered = tasks.incoming(start, end);
-
-        return filtered;
+        ArrayList<Task> incomingTasks = new ArrayList<>();
+        for (Task t : getObservableList()) {
+            Date nextTime = t.nextTimeAfter(start);
+            if (nextTime != null && (nextTime.before(end) || nextTime.equals(end))) {
+                incomingTasks.add(t);
+            }
+        }
+        return incomingTasks;
     }
 }
