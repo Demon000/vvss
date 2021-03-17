@@ -34,10 +34,10 @@ public class Controller {
     public static Stage editNewStage;
     public static Stage infoStage;
 
-    public static TableView mainTable;
+    public static TableView<Task> mainTable;
 
     @FXML
-    public  TableView tasks;
+    public  TableView<Task> tasks;
     @FXML
     private TableColumn<Task, String> columnTitle;
     @FXML
