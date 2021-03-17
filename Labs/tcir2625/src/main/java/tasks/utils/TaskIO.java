@@ -1,11 +1,11 @@
-package tasks.services;
+package tasks.utils;
 
 
 import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
-import tasks.model.LinkedTaskList;
+import tasks.repository.LinkedTaskList;
 import tasks.model.Task;
-import tasks.model.TaskList;
+import tasks.repository.TaskList;
 import tasks.view.*;
 
 import java.io.*;
@@ -26,8 +26,8 @@ public class TaskIO {
         try {
             dataOutputStream.writeInt(tasks.size());
             for (Task t : tasks){
-                dataOutputStream.writeInt(t.getTitle().length());
-                dataOutputStream.writeUTF(t.getTitle());
+                dataOutputStream.writeInt(t.getDescription().length());
+                dataOutputStream.writeUTF(t.getDescription());
                 dataOutputStream.writeBoolean(t.isActive());
                 dataOutputStream.writeInt(t.getRepeatInterval());
                 if (t.isRepeated()){
@@ -48,18 +48,18 @@ public class TaskIO {
         try {
             int listLength = dataInputStream.readInt();
             for (int i = 0; i < listLength; i++){
-                int titleLength = dataInputStream.readInt();
-                String title = dataInputStream.readUTF();
+                int descriptionLength = dataInputStream.readInt();
+                String description = dataInputStream.readUTF();
                 boolean isActive = dataInputStream.readBoolean();
                 int interval = dataInputStream.readInt();
                 Date startTime = new Date(dataInputStream.readLong());
                 Task taskToAdd;
                 if (interval > 0){
                     Date endTime = new Date(dataInputStream.readLong());
-                    taskToAdd = new Task(title, startTime, endTime, interval);
+                    taskToAdd = new Task(description, startTime, endTime, interval);
                 }
                 else {
-                    taskToAdd = new Task(title, startTime);
+                    taskToAdd = new Task(description, startTime);
                 }
                 taskToAdd.setActive(isActive);
                 tasks.add(taskToAdd);
@@ -147,16 +147,16 @@ public class TaskIO {
         boolean isActive = !line.contains("inactive");//if doesnt have inactive - means active
         //Task(String title, Date time)   Task(String title, Date start, Date end, int interval)
         Task result;
-        String title = getTitleFromText(line);
+        String description = getDescriptionFromText(line);
         if (isRepeated){
             Date startTime = getDateFromText(line, true);
             Date endTime = getDateFromText(line, false);
             int interval = getIntervalFromText(line);
-            result = new Task(title, startTime, endTime, interval);
+            result = new Task(description, startTime, endTime, interval);
         }
         else {
             Date startTime = getDateFromText(line, true);
-            result = new Task(title, startTime);
+            result = new Task(description, startTime);
         }
         result.setActive(isActive);
         return result;
@@ -230,7 +230,7 @@ public class TaskIO {
         return date;
 
     }
-    private static String getTitleFromText(String line){
+    private static String getDescriptionFromText(String line){
         int start = 1;
         int end = line.lastIndexOf("\"");
         String result = line.substring(start, end);
@@ -242,9 +242,9 @@ public class TaskIO {
     ////service methods for writing
     private static String getFormattedTask(Task task){
         StringBuilder result = new StringBuilder();
-        String title = task.getTitle();
-        if (title.contains("\"")) title = title.replace("\"","\"\"");
-        result.append("\"").append(title).append("\"");
+        String description = task.getDescription();
+        if (description.contains("\"")) description = description.replace("\"","\"\"");
+        result.append("\"").append(description).append("\"");
 
         if (task.isRepeated()){
             result.append(" from ");
