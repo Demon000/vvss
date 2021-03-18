@@ -19,8 +19,11 @@ import tasks.utils.TaskIO;
 import tasks.services.TasksService;
 
 import java.io.IOException;
+import java.security.InvalidParameterException;
 import java.time.LocalDate;
 import java.util.Date;
+
+import static tasks.utils.AlertUtils.showErrorDialog;
 
 
 public class NewEditController {
@@ -80,8 +83,13 @@ public class NewEditController {
         switch (clickedButton.getId()){
             case  "btnNew" : initNewWindow("New Task");
                 break;
-            case "btnEdit" : initEditWindow("Edit Task");
+            case "btnEdit" :
+                if (task == null) {
+                    throw new InvalidParameterException("No task selected");
+                }
+
                 this.currentTask=task;
+                initEditWindow("Edit Task");
                 break;
         }
     }

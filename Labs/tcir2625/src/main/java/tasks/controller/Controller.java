@@ -20,9 +20,12 @@ import tasks.services.TasksService;
 import tasks.view.Main;
 
 import java.io.IOException;
+import java.security.InvalidParameterException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+
+import static tasks.utils.AlertUtils.showErrorDialog;
 
 
 public class Controller {
@@ -100,6 +103,9 @@ public class Controller {
             editNewStage.initOwner(Main.primaryStage);
             editNewStage.initModality(Modality.APPLICATION_MODAL);//??????
             editNewStage.show();
+        }
+        catch (InvalidParameterException e) {
+            showErrorDialog(e.getMessage());
         }
         catch (IOException e){
             log.error("Error loading new-edit-task.fxml");
