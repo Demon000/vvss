@@ -13,6 +13,4 @@ public abstract class TaskList implements Iterable<Task>, Serializable  {
     public abstract int size();
     public abstract Task getTask(int index);
     public abstract List<Task> getAll();
-
-    public abstract Iterator<Task> iterator();
 }
