@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>tasks.view.Main</OriginalElement>
+  <nodes>
+    <node x="1209.3420454545453" y="2546.5">tasks.controller.Notificator</node>
+    <node x="1464.3420454545453" y="2590.5">java.lang.Thread.WeakClassKey</node>
+    <node x="1824.3420454545453" y="2624.5">java.lang.Thread.UncaughtExceptionHandler</node>
+    <node x="3573.3420454545453" y="0.0">tasks.services.DateService</node>
+    <node x="499.34204545454537" y="2972.0">tasks.repository.ArrayTaskList</node>
+    <node x="1270.8420454545453" y="80.0">java.lang.Runnable</node>
+    <node x="509.86363636363643" y="1208.5">java.lang.Iterable</node>
+    <node x="2524.3420454545453" y="0.0">javafx.application.Application</node>
+    <node x="1547.3568181818182" y="0.0">java.lang.FunctionalInterface</node>
+    <node x="3268.3420454545453" y="0.0">tasks.utils.TaskIO</node>
+    <node x="837.3420454545453" y="2602.0">java.lang.Thread.Caches</node>
+    <node x="1014.8420454545453" y="184.0">java.lang.Thread</node>
+    <node x="114.59204545454543" y="2381.0">tasks.model.Task</node>
+    <node x="490.34204545454537" y="3442.5">tasks.repository.ArrayTaskList.ArrayTaskListIterator</node>
+    <node x="2153.3420454545453" y="0.0">tasks.controller.NewEditController</node>
+    <node x="2481.3420454545453" y="415.0">tasks.view.Main</node>
+    <node x="115.0920454545452" y="1242.5">java.lang.Cloneable</node>
+    <node x="252.84204545454543" y="3387.0">tasks.repository.LinkedTaskList.Node</node>
+    <node x="533.0" y="3686.0">tasks.utils.AlertUtils</node>
+    <node x="0.0" y="3442.5">tasks.repository.LinkedTaskList.LinkedTaskListIterator</node>
+    <node x="2698.3420454545453" y="481.0">javafx.application.Application.Parameters</node>
+    <node x="345.8636363636364" y="1242.5">java.io.Serializable</node>
+    <node x="2924.3420454545453" y="0.0">tasks.controller.Controller</node>
+    <node x="0.0" y="3686.0">tasks.controller.TaskInfoController</node>
+    <node x="59.25" y="2983.0">tasks.repository.LinkedTaskList</node>
+    <node x="472.34204545454537" y="2580.0">tasks.repository.TaskList</node>
+    <node x="237.0" y="3686.0">tasks.services.TasksService</node>
+    <node x="660.3420454545453" y="2535.5">java.lang.Thread.State</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="javafx.application.Application.Parameters" target="javafx.application.Application">
+      <point x="0.0" y="-60.5" />
+      <point x="2788.8420454545453" y="390.0" />
+      <point x="2764.3420454545453" y="390.0" />
+      <point x="80.0" y="182.5" />
+    </edge>
+    <edge source="tasks.model.Task" target="java.io.Serializable">
+      <point x="60.49999999999977" y="-270.5" />
+      <point x="296.0920454545452" y="2351.0" />
+      <point x="363.8636363636364" y="2351.0" />
+      <point x="-54.0" y="15.0" />
+    </edge>
+    <edge source="tasks.repository.ArrayTaskList" target="tasks.repository.TaskList">
+      <point x="0.0" y="-182.5" />
+      <point x="42.0" y="71.5" />
+    </edge>
+    <edge source="tasks.repository.ArrayTaskList.ArrayTaskListIterator" target="tasks.repository.ArrayTaskList">
+      <point x="0.0" y="-71.5" />
+      <point x="0.0" y="182.5" />
+    </edge>
+    <edge source="java.lang.Thread.State" target="java.lang.Thread">
+      <point x="39.25" y="-116.0" />
+      <point x="778.0920454545453" y="2351.0" />
+      <point x="1077.2420454545454" y="2351.0" />
+      <point x="-249.60000000000002" y="1073.5" />
+    </edge>
+    <edge source="tasks.repository.TaskList" target="java.lang.Iterable">
+      <point x="42.0" y="-71.5" />
+      <point x="598.3420454545453" y="2361.0" />
+      <point x="629.8636363636365" y="2361.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="java.lang.Thread.UncaughtExceptionHandler" target="java.lang.Thread">
+      <point x="-71.0" y="-27.0" />
+      <point x="1895.3420454545453" y="2351.0" />
+      <point x="1576.4420454545452" y="2351.0" />
+      <point x="249.5999999999999" y="1073.5" />
+    </edge>
+    <edge source="tasks.controller.Notificator" target="java.lang.Thread">
+      <point x="0.0" y="-105.0" />
+      <point x="0.0" y="1073.5" />
+    </edge>
+    <edge source="tasks.repository.LinkedTaskList.LinkedTaskListIterator" target="tasks.repository.LinkedTaskList">
+      <point x="0.0" y="-71.5" />
+      <point x="-52.75" y="171.5" />
+    </edge>
+    <edge source="tasks.repository.LinkedTaskList.Node" target="tasks.repository.LinkedTaskList">
+      <point x="-38.5" y="-127.0" />
+      <point x="291.3420454545454" y="3362.0" />
+      <point x="217.5" y="3362.0" />
+      <point x="52.75" y="171.5" />
+    </edge>
+    <edge source="java.lang.Thread.Caches" target="java.lang.Thread">
+      <point x="0.0" y="-49.5" />
+      <point x="1013.3420454545453" y="2361.0" />
+      <point x="1202.0420454545454" y="2361.0" />
+      <point x="-124.79999999999995" y="1073.5" />
+    </edge>
+    <edge source="tasks.repository.LinkedTaskList" target="tasks.repository.TaskList">
+      <point x="0.0" y="-171.5" />
+      <point x="164.75" y="2947.0" />
+      <point x="514.3420454545453" y="2947.0" />
+      <point x="-42.0" y="71.5" />
+    </edge>
+    <edge source="java.lang.Runnable" target="java.lang.FunctionalInterface">
+      <point x="0.0" y="-27.0" />
+      <point x="1326.8420454545453" y="55.0" />
+      <point x="1597.3568181818182" y="55.0" />
+      <point x="-50.0" y="15.0" />
+    </edge>
+    <edge source="tasks.repository.LinkedTaskList.Node" target="java.io.Serializable">
+      <point x="38.5" y="-127.0" />
+      <point x="368.3420454545454" y="2361.0" />
+      <point x="399.8636363636364" y="2361.0" />
+      <point x="-18.0" y="15.0" />
+    </edge>
+    <edge source="tasks.view.Main" target="javafx.application.Application">
+      <point x="0.0" y="-126.5" />
+      <point x="2579.8420454545453" y="390.0" />
+      <point x="2604.3420454545453" y="390.0" />
+      <point x="-80.0" y="182.5" />
+    </edge>
+    <edge source="tasks.repository.TaskList" target="java.io.Serializable">
+      <point x="-42.0" y="-71.5" />
+      <point x="514.3420454545453" y="2361.0" />
+      <point x="435.8636363636364" y="2361.0" />
+      <point x="18.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Thread.State" target="java.io.Serializable">
+      <point x="-39.25" y="-116.0" />
+      <point x="699.5920454545453" y="2351.0" />
+      <point x="471.8636363636364" y="2351.0" />
+      <point x="54.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Thread.UncaughtExceptionHandler" target="java.lang.FunctionalInterface">
+      <point x="71.0" y="-27.0" />
+      <point x="2037.3420454545453" y="55.0" />
+      <point x="1697.3568181818182" y="55.0" />
+      <point x="50.0" y="15.0" />
+    </edge>
+    <edge source="tasks.model.Task" target="java.lang.Cloneable">
+      <point x="-60.50000000000023" y="-270.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Thread" target="java.lang.Runnable">
+      <point x="0.0" y="-1073.5" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="java.lang.Thread.WeakClassKey" target="java.lang.Thread">
+      <point x="0.0" y="-61.0" />
+      <point x="1634.3420454545453" y="2361.0" />
+      <point x="1451.6420454545455" y="2361.0" />
+      <point x="124.79999999999995" y="1073.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="1886.7023809523762" y="2422.3333333333326" />
+  <SelectedNodes>
+    <node>tasks.view.Main</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
