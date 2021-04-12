@@ -1,14 +1,13 @@
 package tasks.services;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import tasks.repository.ArrayTaskList;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 class DateServiceTest {
     private ArrayTaskList arrayTaskList;
     private TasksService tasksService;
@@ -28,6 +27,8 @@ class DateServiceTest {
         arrayTaskList = null;
     }
 
+    @DisplayName("Test getDateMergedWithTime for invalid time string")
+    @Tag("ECP")
     @Test
     void test_ecp_getDateMergedWithTime_test_invalid_time_string() {
         Date date = new Date();
@@ -38,7 +39,8 @@ class DateServiceTest {
         });
     }
 
-    @Test
+    @RepeatedTest(value=3, name="Test getDateMergedWithTime for valid time string")
+    @Tag("ECP")
     void test_ecp_getDateMergedWithTime_test_valid_time_string() {
         Date date = new Date();
         String time = "00:00";
@@ -48,6 +50,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("ECP")
     @Test
     void test_ecp_getDateMergedWithTime_test_invalid_time_hour_number() {
         Date date = new Date();
@@ -58,6 +61,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("ECP")
     @Test
     void test_ecp_getDateMergedWithTime_test_invalid_time_minutes_number() {
         Date date = new Date();
@@ -68,6 +72,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("ECP")
     @Test
     void test_ecp_getDateMergedWithTime_test_invalid_time_hour_range() {
         Date date = new Date();
@@ -78,6 +83,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("ECP")
     @Test
     void test_ecp_getDateMergedWithTime_test_invalid_time_minutes_range() {
         Date date = new Date();
@@ -88,6 +94,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("BVA")
     @Test
     void test_bva_getDateMergedWithTime_test_invalid_time_hour_below_lower_bound() {
         Date date = new Date();
@@ -98,6 +105,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("BVA")
     @Test
     void test_bva_getDateMergedWithTime_test_invalid_time_hour_equal_lower_bound() {
         Date date = new Date();
@@ -108,6 +116,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("BVA")
     @Test
     void test_bva_getDateMergedWithTime_test_invalid_time_hour_above_lower_bound() {
         Date date = new Date();
@@ -118,6 +127,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("BVA")
     @Test
     void test_bva_getDateMergedWithTime_test_invalid_time_hour_below_upper_bound() {
         Date date = new Date();
@@ -128,6 +138,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("BVA")
     @Test
     void test_bva_getDateMergedWithTime_test_invalid_time_hour_equal_upper_bound() {
         Date date = new Date();
@@ -138,6 +149,7 @@ class DateServiceTest {
         });
     }
 
+    @Tag("BVA")
     @Test
     void test_bva_getDateMergedWithTime_test_invalid_time_hour_above_upper_bound() {
         Date date = new Date();
