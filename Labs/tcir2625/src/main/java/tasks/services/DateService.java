@@ -33,14 +33,16 @@ public class DateService {
 
         int hour = Integer.parseInt(units[0]);
         int minute = Integer.parseInt(units[1]);
-        if (hour > HOURS_IN_A_DAY || minute > MINUTES_IN_HOUR) throw new IllegalArgumentException("time unit exceeds bounds");
+        if (hour < 0 || minute < 0) throw new IllegalArgumentException("time unit recedes bounds");
+        if (hour >= HOURS_IN_A_DAY || minute >= MINUTES_IN_HOUR) throw new IllegalArgumentException("time unit exceeds bounds");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(noTimeDate);
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
         return calendar.getTime();
     }
-        public String getTimeOfTheDayFromDate(Date date){//to set in detached time field
+
+    public String getTimeOfTheDayFromDate(Date date){//to set in detached time field
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
