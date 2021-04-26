@@ -12,6 +12,7 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 class DateServiceTest {
     private ArrayTaskList arrayTaskList;
     private TasksService tasksService;
