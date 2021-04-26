@@ -46,7 +46,7 @@ public class TasksService {
         return result;
     }
 
-    public Iterable<Task> filterTasks(Date start, Date end){
+    public ArrayList<Task> filterTasks(Date start, Date end){
         ArrayList<Task> incomingTasks = new ArrayList<>();
         for (Task t : getObservableList()) {
             Date nextTime = t.nextTimeAfter(start);
