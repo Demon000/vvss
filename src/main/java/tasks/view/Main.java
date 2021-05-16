@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
 import tasks.controller.Controller;
 import tasks.controller.Notificator;
 import tasks.repository.ArrayTaskList;
-import tasks.utils.TaskIO;
 import tasks.services.TasksService;
+import tasks.utils.TaskIO;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class Main extends Application {
     private static ClassLoader classLoader = Main.class.getClassLoader();
     public static File savedTasksFile = new File(classLoader.getResource("data/tasks.txt").getFile());
 
-    private TasksService service = new TasksService(savedTasksList);//savedTasksList);
+    private TasksService service = new TasksService(savedTasksList);
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -42,8 +42,8 @@ public class Main extends Application {
         try {
             log.info("application start");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
-            Parent root = loader.load();//loader.load(this.getClass().getResource("/fxml/main.fxml"));
-            Controller ctrl= loader.getController();
+            Parent root = loader.load();
+            Controller ctrl = loader.getController();
             service = new TasksService(savedTasksList);
 
             ctrl.setService(service);
@@ -52,14 +52,13 @@ public class Main extends Application {
             primaryStage.setMinWidth(defaultWidth);
             primaryStage.setMinHeight(defaultHeight);
             primaryStage.show();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             log.error("error reading main.fxml");
         }
         primaryStage.setOnCloseRequest(we -> {
-                System.exit(0);
-            });
+            System.exit(0);
+        });
         new Notificator(FXCollections.observableArrayList(service.getObservableList())).start();
     }
 
