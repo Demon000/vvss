@@ -114,7 +114,7 @@ public class NewEditController {
             checkBoxRepeated.setSelected(true);
             hideRepeatedTaskModule(false);
             datePickerEnd.setValue(DateService.getLocalDateValueFromDate(currentTask.getEndTime()));
-            fieldInterval.setText(service.getIntervalInHours(currentTask));
+            fieldInterval.setText(dateService.getIntervalInHours(currentTask));
             txtFieldTimeEnd.setText(dateService.getTimeOfTheDayFromDate(currentTask.getEndTime()));
         }
 
@@ -197,7 +197,7 @@ public class NewEditController {
         if (checkBoxRepeated.isSelected()) {
             Date endDateWithNoTime = dateService.getDateValueFromLocalDate(datePickerEnd.getValue());
             Date newEndDate = dateService.getDateMergedWithTime(txtFieldTimeEnd.getText(), endDateWithNoTime);
-            int newInterval = service.parseFromStringToSeconds(fieldInterval.getText());
+            int newInterval = dateService.parseFromStringToSeconds(fieldInterval.getText());
             if (newStartDate.after(newEndDate)) throw new IllegalArgumentException("Start date should be before end");
             result = new Task(newDescription, newStartDate, newEndDate, newInterval);
         } else {

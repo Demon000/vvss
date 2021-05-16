@@ -1,6 +1,8 @@
 package tasks.services;
 
 
+import tasks.model.Task;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -52,8 +54,32 @@ public class DateService {
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minutes = calendar.get(Calendar.MINUTE);
 
-        return service.formTimeUnit(hours) + ":" + service.formTimeUnit(minutes);
+        return formTimeUnit(hours) + ":" + formTimeUnit(minutes);
     }
 
+    public String getIntervalInHours(Task task) {
+        int seconds = task.getRepeatInterval();
+        int minutes = seconds / DateService.SECONDS_IN_MINUTE;
+        int hours = minutes / DateService.MINUTES_IN_HOUR;
+        minutes = minutes % DateService.MINUTES_IN_HOUR;
+        return formTimeUnit(hours) + ":" + formTimeUnit(minutes);//hh:MM
+    }
 
+    public String formTimeUnit(int timeUnit) {
+        StringBuilder sb = new StringBuilder();
+        if (timeUnit < 10) sb.append("0");
+        if (timeUnit == 0) sb.append("0");
+        else {
+            sb.append(timeUnit);
+        }
+        return sb.toString();
+    }
+
+    public int parseFromStringToSeconds(String stringTime) {//hh:MM
+        String[] units = stringTime.split(":");
+        int hours = Integer.parseInt(units[0]);
+        int minutes = Integer.parseInt(units[1]);
+        int totalMinuets = hours * DateService.MINUTES_IN_HOUR + minutes;
+        return totalMinuets * DateService.SECONDS_IN_MINUTE;
+    }
 }
