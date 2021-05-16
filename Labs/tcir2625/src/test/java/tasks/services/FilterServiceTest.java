@@ -100,7 +100,7 @@ public class FilterServiceTest {
     }
 
     @Test
-    void test_bva_getDateMergedWithTime_test_invalid_time_hour_equal_lower_bound() {
+    void test_bva_getDateMergedWithTime_test_valid_time_hour_equal_lower_bound() {
         Date date = new Date();
         String time = "00:00";
 
@@ -110,7 +110,7 @@ public class FilterServiceTest {
     }
 
     @Test
-    void test_bva_getDateMergedWithTime_test_invalid_time_hour_above_lower_bound() {
+    void test_bva_getDateMergedWithTime_test_valid_time_hour_above_lower_bound() {
         Date date = new Date();
         String time = "01:00";
 
@@ -120,7 +120,7 @@ public class FilterServiceTest {
     }
 
     @Test
-    void test_bva_getDateMergedWithTime_test_invalid_time_hour_below_upper_bound() {
+    void test_bva_getDateMergedWithTime_test_valid_time_hour_below_upper_bound() {
         Date date = new Date();
         String time = "22:00";
 
@@ -130,7 +130,7 @@ public class FilterServiceTest {
     }
 
     @Test
-    void test_bva_getDateMergedWithTime_test_invalid_time_hour_equal_upper_bound() {
+    void test_bva_getDateMergedWithTime_test_valid_time_hour_equal_upper_bound() {
         Date date = new Date();
         String time = "23:00";
 

@@ -33,6 +33,11 @@ class DateServiceTest {
     }
 
     @Test
+    void test_5() {
+        assertEquals(tasksService.filterTasks(null, null), new ArrayList<Task>());
+    }
+
+    @Test
     void test_2() {
         Task t = new Task("Task 1", new Date(2020, Calendar.DECEMBER, 10), new Date(2020, Calendar.DECEMBER, 30), 30);
         t.setActive(true);
