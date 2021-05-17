@@ -205,9 +205,6 @@ public class NewEditController {
         }
         boolean isActive = checkBoxActive.isSelected();
         result.setActive(isActive);
-        System.out.println(result);
         return result;
     }
-
-
 }

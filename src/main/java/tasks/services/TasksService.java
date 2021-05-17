@@ -3,16 +3,16 @@ package tasks.services;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tasks.model.Task;
-import tasks.repository.ArrayTaskList;
+import tasks.repository.TaskList;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class TasksService {
-    private final ArrayTaskList tasks;
+    private final TaskList tasks;
 
-    public TasksService(ArrayTaskList tasks) {
+    public TasksService(TaskList tasks) {
         this.tasks = tasks;
     }
 

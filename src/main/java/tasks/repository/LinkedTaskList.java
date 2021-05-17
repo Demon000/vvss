@@ -19,7 +19,6 @@ public class LinkedTaskList implements TaskList {
         private int cursor;
         private int lastCalled = -1;
 
-
         @Override
         public boolean hasNext() {
             return cursor < numberOfTasks;
