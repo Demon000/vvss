@@ -1,6 +1,8 @@
 package tasks.services;
 
 
+import tasks.model.Task;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -14,17 +16,20 @@ public class DateService {
 
     private TasksService service;
 
-    public DateService(TasksService service){
-        this.service=service;
+    public DateService(TasksService service) {
+        this.service = service;
     }
-    public static LocalDate getLocalDateValueFromDate(Date date){//for setting to DatePicker - requires LocalDate
+
+    public static LocalDate getLocalDateValueFromDate(Date date) {//for setting to DatePicker - requires LocalDate
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
     }
-    public Date getDateValueFromLocalDate(LocalDate localDate){//for getting from DatePicker
+
+    public Date getDateValueFromLocalDate(LocalDate localDate) {//for getting from DatePicker
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         return Date.from(instant);
     }
+
     public Date getDateMergedWithTime(String time, Date noTimeDate) {//to retrieve Date object from both DatePicker and time field
         String[] units = time.split(":");
         if (units.length != 2 || units[0].length() == 0 || units[1].length() == 0) {
@@ -34,7 +39,8 @@ public class DateService {
         int hour = Integer.parseInt(units[0]);
         int minute = Integer.parseInt(units[1]);
         if (hour < 0 || minute < 0) throw new IllegalArgumentException("time unit recedes bounds");
-        if (hour >= HOURS_IN_A_DAY || minute >= MINUTES_IN_HOUR) throw new IllegalArgumentException("time unit exceeds bounds");
+        if (hour >= HOURS_IN_A_DAY || minute >= MINUTES_IN_HOUR)
+            throw new IllegalArgumentException("time unit exceeds bounds");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(noTimeDate);
         calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -42,14 +48,38 @@ public class DateService {
         return calendar.getTime();
     }
 
-    public String getTimeOfTheDayFromDate(Date date){//to set in detached time field
+    public String getTimeOfTheDayFromDate(Date date) {//to set in detached time field
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minutes = calendar.get(Calendar.MINUTE);
 
-        return service.formTimeUnit(hours) + ":" + service.formTimeUnit(minutes);
+        return formTimeUnit(hours) + ":" + formTimeUnit(minutes);
     }
 
+    public String getIntervalInHours(Task task) {
+        int seconds = task.getRepeatInterval();
+        int minutes = seconds / DateService.SECONDS_IN_MINUTE;
+        int hours = minutes / DateService.MINUTES_IN_HOUR;
+        minutes = minutes % DateService.MINUTES_IN_HOUR;
+        return formTimeUnit(hours) + ":" + formTimeUnit(minutes);//hh:MM
+    }
 
+    public String formTimeUnit(int timeUnit) {
+        StringBuilder sb = new StringBuilder();
+        if (timeUnit < 10) sb.append("0");
+        if (timeUnit == 0) sb.append("0");
+        else {
+            sb.append(timeUnit);
+        }
+        return sb.toString();
+    }
+
+    public int parseFromStringToSeconds(String stringTime) {//hh:MM
+        String[] units = stringTime.split(":");
+        int hours = Integer.parseInt(units[0]);
+        int minutes = Integer.parseInt(units[1]);
+        int totalMinuets = hours * DateService.MINUTES_IN_HOUR + minutes;
+        return totalMinuets * DateService.SECONDS_IN_MINUTE;
+    }
 }
